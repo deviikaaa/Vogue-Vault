@@ -1,3 +1,7 @@
+<?php
+include('includes/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +15,42 @@
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-      <link rel="stylesheet" href="style.css">
-      <style>
-        .footer{
-          position: absolute;
-          bottom:0;
-        }
-        </style>
-      </head>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        flex: 1; /* This makes the container take up the available space */
+    }
+
+    .footer {
+        background-color: #343a40; /* Dark background to match the navbar */
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+        margin-top: auto; /* Ensures the footer stays at the bottom of the page */
+    }
+</style>
+
+</head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <img src="./images/logo.png" alt="" class="logo">
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -55,7 +81,6 @@
   </div>
 </nav>
 
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -68,134 +93,86 @@
 </nav>
 
 <div class="bg-light">
-    <h3 class="text-center">Curated Wardrobe </h3>
-    <p class="text-center">One stop fashion destination for women </p>
+    <h3 class="text-center">Curated Wardrobe</h3>
+    <p class="text-center">One stop fashion destination for women</p>
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row px-3">
         <div class="col-md-10">
             <div class="row">
-                <div class="col-md-4 mb-2"> 
-                    <div class="card">
-                        <img src="./images/i1.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                            <a href="#" class="btn btn-secondary">View more</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 mb-2">
-                    <div class="card">
-                        <img src="./images/i2.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                            <a href="#" class="btn btn-secondary">View more</a>
-                        </div>
-                    </div>
-                </div>
+            <?php
+            $select_query = "SELECT * FROM `products` order by rand() limit 0,9";
+            $result_query = mysqli_query($con, $select_query);
 
-                <div class="col-md-4 mb-2"> 
-                    <div class="card">
-                        <img src="./images/i3.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                            <a href="#" class="btn btn-secondary">View more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-2"> 
-                    <div class="card">
-                        <img src="./images/i4.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                            <a href="#" class="btn btn-secondary">View more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-2"> 
-                    <div class="card">
-                        <img src="./images/i5.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                            <a href="#" class="btn btn-secondary">View more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-2"> 
-                    <div class="card">
-                        <img src="./images/i6.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                            <a href="#" class="btn btn-secondary">View more</a>
+            while ($row = mysqli_fetch_assoc($result_query)) {
+                $product_id = $row['product_id'];
+                $product_title = $row['product_title'];
+                $product_description = $row['product_description'];
+                $product_image1 = $row['product_image1'];
+                $product_price = $row['product_price'];
+                $category_id = $row['category_id'];
+                $brand_id = $row['brand_id'];
 
+                echo "<div class='col-md-4 mb-2'> 
+                    <div class='card'>
+                        <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$product_title</h5>
+                            <p class='card-text'>$product_description</p>
+                            <a href='#' class='btn btn-dark'>Add to cart</a>
+                            <a href='#' class='btn btn-secondary'>View more</a>
                         </div>
                     </div>
-                </div>
+                </div>";
+            }
+            ?>
+
             </div>
         </div>
         
         <div class="col-md-2 bg-secondary p-0">
-    <ul class="navbar-nav me-auto text-center">
-        <li class="nav-item bg-dark">
-            <a href="#" class="nav-link" style="color: white;"><h4>Brands</h4></a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Allen solly</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Vanheusan</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Tommy Hilfiger</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Adidas</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Nike</a>
-        </li>
-    </ul>
+            <ul class="navbar-nav me-auto text-center">
+                <li class="nav-item bg-dark">
+                    <a href="#" class="nav-link" style="color: white;"><h4>Brands</h4></a>
+                </li>
+                <?php
+                $select_brands = "SELECT * FROM `brands`";
+                $result_brands = mysqli_query($con, $select_brands);
 
-    <ul class="navbar-nav me-auto text-center">
-        <li class="nav-item bg-dark">
-            <a href="#" class="nav-link" style="color: white;"><h4>Categories</h4></a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Tshirts</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Jeans</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Sweatshirts</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Jackets</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white;">Accessories</a>
-        </li>
-    </ul>
-</div>
+                while ($row_data = mysqli_fetch_assoc($result_brands)) {
+                    $brand_title = $row_data['brand_title'];
+                    $brand_id = $row_data['brand_id'];
+                    echo "<li class='nav-item'>
+                        <a href='index.php?brand=$brand_id' class='nav-link text-light'>$brand_title</a>
+                    </li>";
+                }
+                ?>
+            </ul>
 
+            <ul class="navbar-nav me-auto text-center">
+                <li class="nav-item bg-dark">
+                    <a href="#" class="nav-link" style="color: white;"><h4>Categories</h4></a>
+                </li>
+                <?php
+                $select_categories = "SELECT * FROM `categories`";
+                $result_categories = mysqli_query($con, $select_categories);
+
+                while ($row_data = mysqli_fetch_assoc($result_categories)) {
+                    $category_title = $row_data['category_title'];
+                    $category_id = $row_data['category_id'];
+                    echo "<li class='nav-item'>
+                        <a href='index.php?category=$category_id' class='nav-link text-light'>$category_title</a>
+                    </li>";
+                }
+                ?>
+            </ul>
+        </div>
     </div>
 </div>
 
-<div class="bg-dark p-3 text-center class=footer">
+<div class="bg-dark p-3 text-center footer">
     <p class="text-white"> All rights reserved © - Designed by Devika - 2024</p>
 </div> 
 

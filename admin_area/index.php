@@ -108,7 +108,7 @@
                         <p class="text-dark text-center">Admin Name</p>
                     </div>
                     <div class="button">
-                        <a href="" class="nav-link">Insert Products</a>
+                        <a href="insert_product.php" class="nav-link">Insert Products</a>
                         <a href="#" class="nav-link">View Products</a>
                         <a href="index.php?insert_category" class="nav-link">Insert Categories</a>
                         <a href="#" class="nav-link">View Categories</a>
