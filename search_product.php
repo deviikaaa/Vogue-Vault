@@ -24,10 +24,10 @@ include('functions/common_function.php');
         display: flex;
         flex-direction: column;
     }
-.logo{
-    width:7%;
-    height:auto;
-}
+    .logo{
+        width:7%;
+        height:auto;
+    }
     body {
         display: flex;
         flex-direction: column;
@@ -46,7 +46,7 @@ include('functions/common_function.php');
         width: 100%;
         margin-top: auto; /* Ensures the footer stays at the bottom of the page */
     }
-</style>
+    </style>
 
 </head>
 <body>
@@ -79,12 +79,9 @@ include('functions/common_function.php');
         </li>
       </ul>
       <form class="d-flex ms-auto" role="search" action="search_product.php" method="get">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-    <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
-</form>
-
-
-
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
+      </form>
     </div>
   </div>
 </nav>
@@ -92,6 +89,7 @@ include('functions/common_function.php');
 <?php
 cart();
 ?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -114,12 +112,9 @@ cart();
             <div class="row">
 
             <?php
-            getproducts();
+            search_product();
             get_unique_categories();
             get_unique_brands();
-            // $ip = getIPAddress();  
-            // echo 'User Real IP Address - '.$ip;  
-
             ?>
 
             </div>

@@ -82,16 +82,10 @@ include('functions/common_function.php');
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
     <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
 </form>
-
-
-
     </div>
   </div>
 </nav>
 
-<?php
-cart();
-?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -114,12 +108,9 @@ cart();
             <div class="row">
 
             <?php
-            getproducts();
+            get_all_products();
             get_unique_categories();
             get_unique_brands();
-            // $ip = getIPAddress();  
-            // echo 'User Real IP Address - '.$ip;  
-
             ?>
 
             </div>
@@ -147,9 +138,9 @@ cart();
     </div>
 </div>
 
-<div class="bg-dark p-3 text-center footer">
-    <p class="text-white"> All rights reserved © - Designed by Devika - 2024</p>
-</div> 
+<?php
+include("./includes/footer.php");
+?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 

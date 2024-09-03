@@ -92,6 +92,7 @@ include('functions/common_function.php');
 <?php
 cart();
 ?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -113,13 +114,13 @@ cart();
         <div class="col-md-10">
             <div class="row">
 
+           
+
+            
             <?php
-            getproducts();
+            view_details();
             get_unique_categories();
             get_unique_brands();
-            // $ip = getIPAddress();  
-            // echo 'User Real IP Address - '.$ip;  
-
             ?>
 
             </div>

@@ -26,6 +26,10 @@
         .container-fluid {
             flex: 1;
         }
+        .logo{
+    width:7%;
+    height:auto;
+}
 
         .admin_image {
             width: 100px;

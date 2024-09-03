@@ -5,7 +5,10 @@ html, body {
     display: flex;
     flex-direction: column;
 }
-
+.logo{
+width:7%;
+height:auto;
+}
 body {
     display: flex;
     flex-direction: column;
@@ -16,7 +19,6 @@ body {
     flex: 1; /* This makes the container take up the available space */
 }
 
-/* Adjusted footer style */
 .footer {
     background-color: #343a40; /* Dark background to match the navbar */
     color: white;
