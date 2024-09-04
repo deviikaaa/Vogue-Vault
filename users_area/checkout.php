@@ -1,7 +1,6 @@
 <?php
-include('includes/connect.php');
-include('functions/common_function.php');
-session_start();
+include('../includes/connect.php');
+@session_start();
 ?>
 
 <!DOCTYPE html>
@@ -60,24 +59,18 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="display_all.php">Products</a>
+          <a class="nav-link" href="../display_all.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./users_area/user_registration.php">Register</a>
+          <a class="nav-link" href="user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Total Price: Rs. <?php total_cart_price();
-          ?>/-</a>
-        </li>
+        
       </ul>
       <form class="d-flex ms-auto" role="search" action="search_product.php" method="get">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
@@ -90,77 +83,47 @@ session_start();
   </div>
 </nav>
 
-<?php
-cart();
-?>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
-    <?php
+        <li class="nav-item">
+            <a class="nav-link" href="#">Welcome Guest</a>
+        </li>
+        <?php
         if(!isset($_SESSION['username'])){
-            echo "<li class='nav-item'>
-                <a class='nav-link' href='#'>Welcome Guest</a>
-            </li>";
-        } else {
-            echo "<li class='nav-item'>
-                <a class='nav-link' href='#'>Welcome ".$_SESSION['username']."</a>
-            </li>";
+                echo "<li class='nav-item'>
+            <a class='nav-link' href='./user_login.php'>Login</a>
+        </li>";
         }
-    
-        if(!isset($_SESSION['username'])){
+        else{
             echo "<li class='nav-item'>
-                <a class='nav-link' href='./users_area/user_login.php'>Login</a>
-            </li>";
-        } else {
-            echo "<li class='nav-item'>
-                <a class='nav-link' href='./users_area/logout.php'>Logout</a>
-            </li>";
+            <a class='nav-link' href='logout.php'>Logout</a>
+        </li>";
         }
         ?>
+       
     </ul>
 </nav>
 
-<div class="bg-light">
-    <h3 class="text-center">Curated Wardrobe</h3>
-    <p class="text-center">One stop fashion destination for women</p>
-</div>
+
 
 <div class="container">
     <div class="row px-3">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="row">
+                <?php
+                if(!isset($_SESSION['username'])){
+                    include('user_login.php');
+                }
+                else{
+                    include('payment.php');
 
+                }
            
-
-            
-            <?php
-            view_details();
-            get_unique_categories();
-            get_unique_brands();
-            ?>
-
+?>
             </div>
         </div>
         
-        <div class="col-md-2 bg-secondary p-0">
-            <ul class="navbar-nav me-auto text-center">
-                <li class="nav-item bg-dark">
-                    <a href="#" class="nav-link" style="color: white;"><h4>Brands</h4></a>
-                </li>
-                <?php
-                getbrands();
-                ?>
-            </ul>
-
-            <ul class="navbar-nav me-auto text-center">
-                <li class="nav-item bg-dark">
-                    <a href="#" class="nav-link" style="color: white;"><h4>Categories</h4></a>
-                </li>
-                <?php
-                getcategories();
-                ?>
-            </ul>
-        </div>
+        
     </div>
 </div>
 

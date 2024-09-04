@@ -1,6 +1,7 @@
 <?php
 include('includes/connect.php');
 include('functions/common_function.php');
+session_start(); // Ensure session is started
 ?>
 
 <!DOCTYPE html>
@@ -11,48 +12,47 @@ include('functions/common_function.php');
     <title>Vogue Vault</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-     crossorigin="anonymous">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-     <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css"> 
     <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-    }
-.logo{
-    width:7%;
-    height:auto;
-}
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo{
+            width:7%;
+            height:auto;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    .container {
-        flex: 1; /* This makes the container take up the available space */
-    }
+        .container {
+            flex: 1; /* This makes the container take up the available space */
+        }
 
-    .footer {
-        background-color: #343a40; /* Dark background to match the navbar */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-        margin-top: auto; /* Ensures the footer stays at the bottom of the page */
-    }
-</style>
-
+        .footer {
+            background-color: #343a40; /* Dark background to match the navbar */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            margin-top: auto; /* Ensures the footer stays at the bottom of the page */
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <img src="./images/logo.png" alt="" class="logo">
+    <img src="./images/logo.png" alt="Logo" class="logo">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -65,7 +65,7 @@ include('functions/common_function.php');
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="./users_area/user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -74,17 +74,13 @@ include('functions/common_function.php');
           <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Total Price: Rs. <?php total_cart_price();
-          ?>/-</a>
+          <a class="nav-link" href="#">Total Price: Rs. <?php total_cart_price(); ?>/-</a>
         </li>
       </ul>
       <form class="d-flex ms-auto" role="search" action="search_product.php" method="get">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-    <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
-</form>
-
-
-
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        <input type="submit" value="Search" class="btn btn-outline-light" name="search_data_product">
+      </form>
     </div>
   </div>
 </nav>
@@ -94,12 +90,27 @@ cart();
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Welcome Guest</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-        </li>
+        <?php
+        if(!isset($_SESSION['username'])){
+            echo "<li class='nav-item'>
+                <a class='nav-link' href='#'>Welcome Guest</a>
+            </li>";
+        } else {
+            echo "<li class='nav-item'>
+                <a class='nav-link' href='#'>Welcome ".$_SESSION['username']."</a>
+            </li>";
+        }
+    
+        if(!isset($_SESSION['username'])){
+            echo "<li class='nav-item'>
+                <a class='nav-link' href='./users_area/user_login.php'>Login</a>
+            </li>";
+        } else {
+            echo "<li class='nav-item'>
+                <a class='nav-link' href='./users_area/logout.php'>Logout</a>
+            </li>";
+        }
+        ?>
     </ul>
 </nav>
 
@@ -112,16 +123,11 @@ cart();
     <div class="row px-3">
         <div class="col-md-10">
             <div class="row">
-
-            <?php
-            getproducts();
-            get_unique_categories();
-            get_unique_brands();
-            // $ip = getIPAddress();  
-            // echo 'User Real IP Address - '.$ip;  
-
-            ?>
-
+                <?php
+                getproducts();
+                get_unique_categories();
+                get_unique_brands();
+                ?>
             </div>
         </div>
         
@@ -130,18 +136,14 @@ cart();
                 <li class="nav-item bg-dark">
                     <a href="#" class="nav-link" style="color: white;"><h4>Brands</h4></a>
                 </li>
-                <?php
-                getbrands();
-                ?>
+                <?php getbrands(); ?>
             </ul>
 
             <ul class="navbar-nav me-auto text-center">
                 <li class="nav-item bg-dark">
                     <a href="#" class="nav-link" style="color: white;"><h4>Categories</h4></a>
                 </li>
-                <?php
-                getcategories();
-                ?>
+                <?php getcategories(); ?>
             </ul>
         </div>
     </div>
