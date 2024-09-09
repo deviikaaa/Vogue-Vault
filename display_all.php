@@ -66,9 +66,19 @@ session_start();
         <li class="nav-item">
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./users_area/user_registration.php">Register</a>
-        </li>
+        <?php
+if (isset($_SESSION['username'])) {
+    // If the user is logged in, show "My Account"
+    echo "<li class='nav-item'>
+            <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+          </li>";
+} else {
+    // If the user is not logged in, show "Register"
+    echo "<li class='nav-item'>
+            <a class='nav-link' href='./users_area/user_registration.php'>Register</a>
+          </li>";
+}
+?>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
@@ -110,6 +120,7 @@ session_start();
                 <a class='nav-link' href='./users_area/logout.php'>Logout</a>
             </li>";
         }
+        
         ?>
     </ul>
 </nav>

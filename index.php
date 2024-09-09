@@ -53,7 +53,9 @@ session_start(); // Ensure session is started
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <img src="./images/logo.png" alt="Logo" class="logo">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+    aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -64,9 +66,22 @@ session_start(); // Ensure session is started
         <li class="nav-item">
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./users_area/user_registration.php">Register</a>
-        </li>
+
+        <?php
+if (isset($_SESSION['username'])) {
+    // If the user is logged in, show "My Account"
+    echo "<li class='nav-item'>
+            <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+          </li>";
+} else {
+    // If the user is not logged in, show "Register"
+    echo "<li class='nav-item'>
+            <a class='nav-link' href='./users_area/user_registration.php'>Register</a>
+          </li>";
+}
+?>
+
+        
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
