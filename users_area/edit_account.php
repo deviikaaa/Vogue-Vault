@@ -71,6 +71,8 @@ if(isset($_POST['user_update'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
+    <link rel="icon" href="../images/favicon.png" sizes="360x360" type="image/x-icon"> <!-- Add this line for favicon -->
+
 </head>
 <body>
     <h3 class="text-center text-success mb-4">Edit Profile</h3>

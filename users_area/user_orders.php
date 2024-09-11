@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Orders</title>
+    <link rel="icon" href="../images/favicon.png" sizes="360x360" type="image/x-icon"> <!-- Add this line for favicon -->
+
     <link rel="stylesheet" href="path_to_your_stylesheet.css"> <!-- Link your CSS file if needed -->
 </head>
 <body>

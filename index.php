@@ -10,6 +10,8 @@ session_start(); // Ensure session is started
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vogue Vault</title>
+    <link rel="icon" href="images/favicon.png" sizes="360x360" type="image/x-icon"> <!-- Add this line for favicon -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
@@ -68,19 +70,17 @@ session_start(); // Ensure session is started
         </li>
 
         <?php
-if (isset($_SESSION['username'])) {
-    // If the user is logged in, show "My Account"
-    echo "<li class='nav-item'>
-            <a class='nav-link' href='./users_area/profile.php'>My Account</a>
-          </li>";
-} else {
-    // If the user is not logged in, show "Register"
-    echo "<li class='nav-item'>
-            <a class='nav-link' href='./users_area/user_registration.php'>Register</a>
-          </li>";
-}
-?>
+                if(!isset($_SESSION['username'])){
+echo "<li class='nav-item'>
+          <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+        </li>";
 
+                }else{
+                   echo" <li class='nav-item'>
+          <a class='nav-link' href='./users_area/user_registration.php'>Register</a>
+        </li>";
+                }
+?>
         
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
